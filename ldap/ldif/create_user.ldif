@@ -1,0 +1,15 @@
+dn: uid=pepa2,ou=users,dc=zcu,dc=cz
+uid: pepa2
+cn: pepa2
+objectClass: account
+objectClass: posixAccount
+objectClass: top
+objectClass: shadowAccount
+userPassword:: 1234
+shadowLastChange: 14846
+shadowMax: 99999
+shadowWarning: 7
+loginShell: /bin/bash
+uidNumber: 10001
+gidNumber: 10001
+homeDirectory: /home/ldap/pepa2

@@ -1,0 +1,10 @@
+dn: uid=pepa2,ou=users,dc=zcu,dc=cz
+changeType: modify
+replace: homeDirectory
+homeDirectory: /home/ldap/pepa2
+
+dn: uid=pepa2,ou=users,dc=zcu,dc=cz
+changeType: modify
+replace: userPassword
+userPassword: {SSHA}oL3adLXa8ixwsOEpwTi0Rdxtt86AcLm9
+

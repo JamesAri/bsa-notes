@@ -1,0 +1,5 @@
+dn: cn=admins,ou=groups,dc=zcu,dc=cz
+objectClass: posixGroup
+cn: admins
+gidNumber: 10001
+description: Group account
