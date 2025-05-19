@@ -6,15 +6,13 @@ vim vars
 ./easyrsa init-pki
 ./easyrsa build-ca
 openssl x509 -in /etc/CA3/pki/ca.crt -text
-./easyrsa gen-req server.kuba
-
+./easyrsa gen-req server.kuba nopass
 openssl req -in /etc/CA3/pki/reqs/server.kuba.req -text
 ./easyrsa sign server server.kuba
 
 
 
 # nginx with SSC
-
 sudo apt install -y nginx
 sudo vim /etc/nginx/sites-available/secure-site
 
