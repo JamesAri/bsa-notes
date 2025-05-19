@@ -12,10 +12,10 @@ apt-get install bind9 dnsutils -y
 # service bind9 start|stop|restart
 
 cd /etc/bind/
-vim named.conf.options
+vim /etc/bind/named.conf.options
 
 cd /var/cache/bind
-vim db.jakub.bsa
+vim /var/cache/bind/db.jakub.bsa
 
 named-checkzone jakub.bsa /var/cache/bind/db.jakub.bsa
 
