@@ -1,0 +1,18 @@
+$TTL    604800
+@   IN  SOA jakub.bsa. root.localhost. (
+         2025051701     ; Serial / YYYYMMDDXX
+             604800     ; Refresh / seconds
+              86400     ; Retry / seconds
+            2419200 ; Expire / seconds
+             604800 )   ; Negative Cache TTL / explicitni TTL
+@         IN      NS                ns.jakub.bsa.
+@         IN      A                 147.228.173.174
+bsa1      IN      A                 147.228.173.174
+mail      IN      A                 147.228.173.174
+pop3      IN      CNAME             mail
+smtp      IN      CNAME             mail
+imap      IN      CNAME             mail
+@         IN      MX           10   mail
+ns        IN      A                 147.228.173.174
+vpn       IN      A                 147.228.173.174
+bsa2      IN      A                 147.228.173.37

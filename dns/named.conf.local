@@ -1,0 +1,7 @@
+zone "jakub.bsa." in {
+    type master;
+    file "/var/cache/bind/db.jakub.bsa";
+    inline-signing yes;
+    auto-dnssec maintain;
+    key-directory "/etc/bind/keys";
+};
