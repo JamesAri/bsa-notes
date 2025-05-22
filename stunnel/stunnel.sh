@@ -5,8 +5,7 @@ STUNNEL_CERT_NAME=private.slechta.bsa
 ./easyrsa gen-req $STUNNEL_CERT_NAME nopass
 ./easyrsa sign server $STUNNEL_CERT_NAME
 
-cd /etc/ca
-cat pki/issued/$STUNNEL_CERT_NAME.crt pki/private/$STUNNEL_CERT_NAME.key > /etc/stunnel/stunnel.slechta.bsa.pem
+cat /etc/ca/pki/issued/$STUNNEL_CERT_NAME.crt /etc/ca/pki/private/$STUNNEL_CERT_NAME.key > /etc/stunnel/stunnel.slechta.bsa.pem
 
 sudo chmod 600 /etc/stunnel/stunnel.slechta.bsa.pem
 sudo chown root:root /etc/stunnel/stunnel.slechta.bsa.pem
