@@ -86,7 +86,6 @@ fdisk /dev/loop0
 pvcreate /dev/loop0
 ```
 
-
 ---
 
 

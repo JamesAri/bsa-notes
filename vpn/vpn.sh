@@ -1,15 +1,15 @@
 apt install openvpn -y
 apt install easy-rsa -y
 apt install -y easy-rsa
-cp -r /usr/share/easy-rsa/ /etc/CA3
-cd /etc/CA3
+cp -r /usr/share/easy-rsa/ /etc/ca
+cd /etc/ca
 mv vars.example vars
 vim vars
 ./easyrsa init-pki
 
 #  SERVER
 
-cd /etc/CA3
+cd /etc/ca
 ./easyrsa gen-req vpn.jakub.bsa nopass
 ./easyrsa sign server vpn.jakub.bsa
 
@@ -38,14 +38,14 @@ iptables -I INPUT -p udp --dport 1194 -j ACCEPT
 
 
 # CLIENT
-cd /etc/CA3
+cd /etc/ca
 ./easyrsa gen-req client-01.vpn.jakub.bsa nopass
 ./easyrsa sign client client-01.vpn.jakub.bsa
 
 mkdir -p vpn/tmp/certs
-ssh testy "sudo cat /etc/CA3/pki/ca.crt" > vpn/tmp/certs/ca.crt
-ssh testy "sudo cat /etc/CA3/pki/issued/client-01.vpn.jakub.bsa.crt" > vpn/tmp/certs/client-01.vpn.jakub.bsa.crt
-ssh testy "sudo cat /etc/CA3/pki/private/client-01.vpn.jakub.bsa.key" > vpn/tmp/certs/client-01.vpn.jakub.bsa.key
+ssh testy "sudo cat /etc/ca/pki/ca.crt" > vpn/tmp/certs/ca.crt
+ssh testy "sudo cat /etc/ca/pki/issued/client-01.vpn.jakub.bsa.crt" > vpn/tmp/certs/client-01.vpn.jakub.bsa.crt
+ssh testy "sudo cat /etc/ca/pki/private/client-01.vpn.jakub.bsa.key" > vpn/tmp/certs/client-01.vpn.jakub.bsa.key
 
 vim /etc/hosts
 # <ip>	vpn.jakub.bsa

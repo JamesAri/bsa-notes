@@ -1,0 +1,28 @@
+server {
+    listen 80;
+    server_name private.slechta.bsa;
+
+    root /var/www/html;
+    index index.html;
+
+    location / {
+        try_files $uri $uri/ =404;
+    }
+}
+server {
+    listen 443 ssl;
+    server_name public.slechta.bsa;
+
+    ssl_certificate /etc/ca/pki/issued/public.slechta.bsa.crt;
+    ssl_certificate_key /etc/ca/pki/private/public.slechta.bsa.key;
+
+    ssl_protocols TLSv1.2 TLSv1.3;
+    ssl_ciphers HIGH:!aNULL:!MD5;
+
+    root /var/www/html;
+    index index.html;
+
+    location / {
+        try_files $uri $uri/ =404;
+    }
+}
