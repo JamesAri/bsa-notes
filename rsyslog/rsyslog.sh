@@ -19,8 +19,7 @@ vim /etc/rsyslog.d/10-remote.conf
 
 # =======
 
-$template RemoteLogs,"/var/log/remote/%HOSTNAME%/%PROGRAMNAME%.log"
-*.* ?RemoteLogs
+$template RemoteLogs,"/var/log/remote/%HOSTNAME%/%PROGRAMNAME%.log" *.* ?RemoteLogs
 
 # rozdeleni logu do adresaru
 $template HourlyMailLog,"/var/log/logdir/%$YEAR%/%$MONTH%/%$DAY%/%HOSTNAME%_mail.log
@@ -50,3 +49,18 @@ logger "Test message from client"
 sudo find /var/log/remote -type f
 sudo tail -f /var/log/remote/*/*.log
 
+
+# /etc/rsyslog.d/apache.conf
+local6.err      /var/log/apache/httpd-error.log
+local6.notice   /var/log/apache/httpd-access.log
+# nebo na remote
+local6.*        @192.168.1.100:514
+
+
+# /etc/rsyslog.d/apache.conf
+if $syslogfacility-text == 'local6' and $programname == 'httpd' and ($syslogseverity-text == 'err' or $syslogseverity-text == 'notice') then /var/log/rsyslog-apache-log.log
+& stop
+
+# /etc/apache2/apache2.conf
+errorlog  "|/usr/bin/tee -a /var/log/www/error.log  | /usr/bin/logger -t httpd -p local6.err"
+customlog "|/usr/bin/tee -a /var/log/www/access.log | /usr/bin/logger -t httpd -p local6.notice" extended_ncsa
