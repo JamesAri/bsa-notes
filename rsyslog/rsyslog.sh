@@ -20,11 +20,7 @@ vim /etc/rsyslog.d/10-remote.conf
 # =======
 
 $template RemoteLogs,"/var/log/remote/%HOSTNAME%/%PROGRAMNAME%.log" *.* ?RemoteLogs
-
-# rozdeleni logu do adresaru
 $template HourlyMailLog,"/var/log/logdir/%$YEAR%/%$MONTH%/%$DAY%/%HOSTNAME%_mail.log
-
-# formatovani logu
 $template SyslFormat,"%timegenerated% %HOSTNAME%  %syslogtag%%msg:::space$
 
 # zapis logu do souboru dle definice a formatu
@@ -64,3 +60,22 @@ if $syslogfacility-text == 'local6' and $programname == 'httpd' and ($syslogseve
 # /etc/apache2/apache2.conf
 errorlog  "|/usr/bin/tee -a /var/log/www/error.log  | /usr/bin/logger -t httpd -p local6.err"
 customlog "|/usr/bin/tee -a /var/log/www/access.log | /usr/bin/logger -t httpd -p local6.notice" extended_ncsa
+
+
+# $ActionFileEnableSync off
+# $ActionFileDefaultTemplate SyslFormat
+# $WorkDirectory /var/spool/rsyslog
+# $CreateDirs on
+
+
+# module(load="imudp")    # pokud přijímáš UDP logy
+# module(load="imtcp")    # pokud přijímáš TCP logy
+
+# template(name="RemoteLogs" type="string"
+#          string="/var/log/remote/%HOSTNAME%/%PROGRAMNAME%.log")
+
+# action(type="omfile"
+#        dynaFile="RemoteLogs"
+#        createDirs="on"
+#        DirCreateMode="0755"
+#        sync="off")
