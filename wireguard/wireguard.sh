@@ -24,7 +24,7 @@ sudo wg-quick up /etc/wireguard/wg0.conf
 wg show
 wg show wg0 latest-handshakes
 
-
+# DEBUG
 
 # Allow established traffic back in on eth0 → wg0
 iptables -A FORWARD -i eth0 -o wg0 -m state --state RELATED,ESTABLISHED -j ACCEPT
@@ -32,3 +32,4 @@ iptables -A FORWARD -i eth0 -o wg0 -m state --state RELATED,ESTABLISHED -j ACCEP
 # Allow new traffic out on wg0 → eth0
 iptables -A FORWARD -i wg0 -o eth0 -j ACCEPT
 
+sudo sysctl -w net.ipv4.ip_forward=1
