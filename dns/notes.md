@@ -1,3 +1,28 @@
+```
+view "localnetwork" {
+    match-clients { 192.168.0.0/16; localhost; };
+    recursion yes;
+
+    zone "jakub.bsa." IN {
+        type master;
+        file "/var/cache/bind/db.jakub.bsa";
+        inline-signing yes;
+        auto-dnssec maintain;
+        key-directory "/etc/bind/keys";
+    };
+};
+
+
+view "public" {
+    match-clients { any; };
+    recursion no;
+
+    // maybe serve a stub or slave for jakub.bsa, or nothing
+};
+```
+
+
+
 This configuration snippet is from the **BIND (Berkeley Internet Name Domain)** server, a widely used DNS server software. Here’s a breakdown of each line:
 
 ---

@@ -36,10 +36,12 @@ dnssec-keygen -a ECDSAP256SHA256 -fK jakub.bsa
 chmod g+r K*.private
 systemctl restart bind9
 rndc sign jakub.bsa
+rndc signing -list jakub.bsa
 
 iptables -I INPUT -j ACCEPT -p udp --dport 53
 iptables -I INPUT -j ACCEPT -p tcp --dport 53
-
+iptables -I INPUT -j ACCEPT -p tcp --dport 953
+iptables -I INPUT -j ACCEPT -p udp --dport 953
 
 # checks
 dig @localhost mail.jakub.bsa. A
@@ -47,3 +49,8 @@ dig -6 @localhost -t ANY jakub.bsa
 named-checkzone jakub.bsa /var/cache/bind/db.jakub.bsa # check zone file
 dig @localhost -t TXT .jakub.bsa. +short
 
+rndc signing -list jakub.bsa
+
+# chekcs if views
+rndc signing -list jakub.bsa IN localnetwork
+named-compilezone -f raw -j -o - jakub.bsa /var/cache/bind/jakub.bsa
