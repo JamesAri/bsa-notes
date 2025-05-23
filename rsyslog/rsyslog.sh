@@ -46,9 +46,6 @@ logger "Test message from client"
 sudo find /var/log/remote -type f
 sudo tail -f /var/log/remote/*/*.log
 
-
-
-
 # template(name="RemoteLogs" type="string" string="/var/log/remote/%HOSTNAME%/%PROGRAMNAME%.log")
 # action(type="omfile" dynaFile="RemoteLogs" createDirs="on" DirCreateMode="0755" sync="off")
 
