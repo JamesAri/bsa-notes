@@ -14,8 +14,8 @@ systemctl reload apache2
 # remove passphrase from key
 openssl rsa -in /etc/ca/pki/private/server.kuba.key -out /etc/ca/pki/private/server.kuba.key
 
-iptables -A INPUT -p tcp --dport 443 -j ACCEPT
-iptables -A INPUT -p tcp --dport 80 -j ACCEPT
+iptables -I INPUT -p tcp --dport 443 -j ACCEPT
+iptables -I INPUT -p tcp --dport 80 -j ACCEPT
 
 # # checks
 curl -kv https://public.slechta.bsa

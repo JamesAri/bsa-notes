@@ -21,7 +21,7 @@ cert = /etc/stunnel/stunnel.slechta.bsa.pem
 systemctl enable stunnel4
 systemctl restart stunnel4
 
-iptables -A INPUT -p tcp --dport 8443 -j ACCEPT
+iptables -I INPUT -p tcp --dport 8443 -j ACCEPT
 
 # checks
 curl -kv https://localhost:8443
