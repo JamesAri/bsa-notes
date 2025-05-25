@@ -45,7 +45,7 @@ iptables -I INPUT -j ACCEPT -p udp --dport 953
 
 # checks
 dig @localhost mail.jakub.bsa. A
-dig -6 @localhost -t ANY jakub.bsa
+dig -4 @localhost -t ANY jakub.bsa
 named-checkzone jakub.bsa /var/cache/bind/db.jakub.bsa # check zone file
 dig @localhost -t TXT .jakub.bsa. +short
 

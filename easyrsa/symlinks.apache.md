@@ -20,10 +20,10 @@ After changing the config, reload or restart Apache:
 
 ```bash
 # Debian/Ubuntu
-sudo systemctl reload apache2
+systemctl reload apache2
 
 # RHEL/CentOS/AlmaLinux
-sudo systemctl reload httpd
+systemctl reload httpd
 ```
 
 ---

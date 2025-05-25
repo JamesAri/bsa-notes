@@ -33,7 +33,7 @@ cryptsetup luksAddKey $LV_PATH /tmp/key1 --key-file /root/keyfile # pridani klic
 cryptsetup luksDump /dev/loop0
 echo "decrypted UUID=98c0fb54-cef2-4627-962f-f3688973d3aa /boot/keyfile luks" >> /etc/crypttab
 # mount při startu
-sudo mkdir -p /mnt/decrypted
+mkdir -p /mnt/decrypted
 echo  "/dev/mapper/decrypted /mnt/decrypted ext4 defaults 0 2" >> /etc/fstab
 # If this is the root partition or required early in the boot process, you need to update your initramfs:
 update-initramfs -u

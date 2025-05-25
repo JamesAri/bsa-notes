@@ -1,6 +1,6 @@
 # https://documentation.ubuntu.com/server/how-to/openldap/install-openldap/index.html
-sudo apt install slapd ldap-utils ldapscripts -y
-sudo dpkg-reconfigure -plow slapd
+apt install slapd ldap-utils ldapscripts -y
+dpkg-reconfigure -plow slapd
 
 apt install libnss-ldap libpam-ldap -y
 

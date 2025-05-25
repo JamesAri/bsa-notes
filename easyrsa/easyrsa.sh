@@ -1,4 +1,4 @@
-sudo apt install -y easy-rsa
+apt install -y easy-rsa
 cp -r /usr/share/easy-rsa/ /etc/ca
 cd /etc/ca
 mv vars.example vars

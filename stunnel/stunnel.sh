@@ -7,8 +7,8 @@ STUNNEL_CERT_NAME=private.slechta.bsa
 
 cat /etc/ca/pki/issued/$STUNNEL_CERT_NAME.crt /etc/ca/pki/private/$STUNNEL_CERT_NAME.key > /etc/stunnel/stunnel.slechta.bsa.pem
 
-sudo chmod 600 /etc/stunnel/stunnel.slechta.bsa.pem
-sudo chown root:root /etc/stunnel/stunnel.slechta.bsa.pem
+chmod 600 /etc/stunnel/stunnel.slechta.bsa.pem
+chown root:root /etc/stunnel/stunnel.slechta.bsa.pem
 
 echo "
 pid = /var/run/stunnel.pid

@@ -1,8 +1,8 @@
-apt update && sudo apt install rsyslog
+apt update && apt install rsyslog
 
-sudo systemctl start rsyslog
-sudo systemctl enable rsyslog
-sudo systemctl status rsyslog
+systemctl start rsyslog
+systemctl enable rsyslog
+systemctl status rsyslog
 
 vim /etc/rsyslog.conf
 
@@ -28,10 +28,10 @@ mail.*                                                  -?HourlyMailLog;SyslForm
 
 # =================================================
 
-sudo mkdir -p /var/log/errors
-# sudo chown syslog:adm /var/log/remote
-sudo chown syslog:adm /var/log/errors
-sudo systemctl restart rsyslog
+mkdir -p /var/log/errors
+# chown syslog:adm /var/log/remote
+chown syslog:adm /var/log/errors
+systemctl restart rsyslog
 
 # CLIENT
 
@@ -39,12 +39,12 @@ vim /etc/rsyslog.conf
 # ================
 *.* @192.168.1.100:514   # Use @@ for TCP, @ UDP
 # ================
-sudo systemctl restart rsyslog
+systemctl restart rsyslog
 
 # checks
 logger "Test message from client"
-sudo find /var/log/remote -type f
-sudo tail -f /var/log/remote/*/*.log
+find /var/log/remote -type f
+tail -f /var/log/remote/*/*.log
 
 # template(name="RemoteLogs" type="string" string="/var/log/remote/%HOSTNAME%/%PROGRAMNAME%.log")
 # action(type="omfile" dynaFile="RemoteLogs" createDirs="on" DirCreateMode="0755" sync="off")

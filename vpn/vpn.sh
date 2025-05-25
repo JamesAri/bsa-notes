@@ -45,8 +45,10 @@ ssh testy "sudo cat /etc/ca/pki/ca.crt" > vpn/tmp/certs/ca.crt
 ssh testy "sudo cat /etc/ca/pki/issued/client-01.vpn.jakub.bsa.crt" > vpn/tmp/certs/client-01.vpn.jakub.bsa.crt
 ssh testy "sudo cat /etc/ca/pki/private/client-01.vpn.jakub.bsa.key" > vpn/tmp/certs/client-01.vpn.jakub.bsa.key
 
+# lab machine:
 vim /etc/hosts
 # <ip>	vpn.jakub.bsa
 
+# lab machine:
 cd /etc/openvpn
 sudo openvpn --config bsa-client-01.conf
