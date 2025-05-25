@@ -1,4 +1,4 @@
-apt update && apt install rsyslog
+apt update && apt install rsyslog -y
 
 systemctl start rsyslog
 systemctl enable rsyslog
@@ -26,7 +26,7 @@ $template SyslFormat,"%timegenerated% %HOSTNAME%  %syslogtag%%msg:::space$
 # zapis logu do souboru dle definice a formatu
 mail.*                                                  -?HourlyMailLog;SyslFormat
 
-# =================================================
+# ================== LOG DIR REMOTE =========================
 
 mkdir -p /var/log/errors
 # chown syslog:adm /var/log/remote
@@ -50,6 +50,7 @@ tail -f /var/log/remote/*/*.log
 # action(type="omfile" dynaFile="RemoteLogs" createDirs="on" DirCreateMode="0755" sync="off")
 
 # ============ APACHE LOGGING ============
+
 # == Legacy rsyslog syntax ==
 
 # /etc/rsyslog.d/apache.conf
